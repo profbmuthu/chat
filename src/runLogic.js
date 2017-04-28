@@ -10,6 +10,7 @@
         const handleGreeting = client.createStep({
           satisfied() { return false },
 
+           
           prompt() {
             // Tell the system to respond with a saved 'greeting' response
             // This is generated from saved messages with 'greeting' intents
@@ -18,6 +19,14 @@
           }
         })
 
+        const handlecourse = client.createStep({
+            satisfied() {return false},
+            prompt(){
+                client.addResponse('course')
+                client.done()
+            }
+        })
+            
         // Create a new 'step' function to handle a 'goodbye' intent
         const handleGoodbye = client.createStep({
           satisfied() { return false },

@@ -22,7 +22,7 @@
         const handlecourse = client.createStep({
             satisfied() {return false},
             prompt(){
-                client.addResponse('course')
+                client.addResponse('courselist')
                 client.done()
             }
         })

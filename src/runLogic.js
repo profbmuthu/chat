@@ -19,14 +19,31 @@
           }
         })
 
-        const handlecourse = client.createStep({
+        const handleCourselist = client.createStep({
             satisfied() {return false},
             prompt(){
                 client.addResponse('courselist')
                 client.done()
             }
         })
-            
+
+         const handleCoursedelivery = client.createStep({
+            satisfied() {return false},
+            prompt(){
+                client.addResponse('coursedelivery')
+                client.done()
+            }
+        })
+         
+         const handleCourseft = client.createStep({
+            satisfied() {return false},
+            prompt(){
+                client.addResponse('courseft')
+                client.done()
+            }
+        })
+
+
         // Create a new 'step' function to handle a 'goodbye' intent
         const handleGoodbye = client.createStep({
           satisfied() { return false },
@@ -44,11 +61,16 @@
           streams: {
             goodbye: handleGoodbye,
             greeting: handleGreeting,
+            courselist: handleCourselist,
+            coursedelivery: handleCoursedelivery,
+            courseft: handleCourseft
+              
           },
           // Assign stream references to our classifications (intents)
           classifications: {
             goodbye: 'goodbye',
-            greeting: 'greeting'
+            greeting: 'greeting',
+            courseft:  'course Fast Track'
           },
         })
       })

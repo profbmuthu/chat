@@ -21,7 +21,10 @@
 
         const handleCourselist = client.createStep({
             satisfied() {return false},
+            
             prompt(){
+            // Tell the system to respond with a saved 'courselist' response
+            // This is generated from saved messages with 'courselist' intents
                 client.addResponse('courselist')
                 client.done()
             }
@@ -59,12 +62,12 @@
         client.runFlow({
           // create a stream object with a reference to our step functions
           streams: {
-            goodbye: handleGoodbye,
             greeting: handleGreeting,
             courselist: handleCourselist,
             coursedelivery: handleCoursedelivery,
-            courseft: handleCourseft
-              
+            courseft: handleCourseft,
+            goodbye: handleGoodbye
+
           },
           // Assign stream references to our classifications (intents)
           classifications: {
